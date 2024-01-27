@@ -10,7 +10,7 @@
 		<property name="hibernate.connection.driver_class">
 			com.mysql.cj.jdbc.Driver</property>
 		<property name="hibernate.connection.url">
-			jdbc:mysql://localhost:3306/test_db</property>
+			jdbc:mysql://localhost:3306/hotpot</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">Nipurna@123</property>
 
@@ -19,15 +19,15 @@
 		<property name="show_sql">true</property>
 
 		<!--mapping model/entity class -->
-		<mapping class="com.hexaware.casestudy.entity.Address" />
+		<mapping class="com.hexaware.casestudy.entity.DeliveryAddress" />
 		<mapping class="com.hexaware.casestudy.entity.Customers" />
 		<mapping class="com.hexaware.casestudy.entity.Cart" />
-		<mapping class="com.hexaware.casestudy.entity.Restaurant" />
+		<mapping class="com.hexaware.casestudy.entity.Restaurants" />
 		<mapping class="com.hexaware.casestudy.entity.OrderDetails" />
-		<mapping class="com.hexaware.casestudy.entity.Admin" />
-		<mapping class="com.hexaware.casestudy.entity.Discounts" />
-		<mapping class="com.hexaware.casestudy.entity.Menuitems" />
-		<mapping class="com.hexaware.casestudy.entity.Payments" />
+		<mapping class="com.hexaware.casestudy.entity.Administrator" />
+		<mapping class="com.hexaware.casestudy.entity.Discount" />
+		<mapping class="com.hexaware.casestudy.entity.MenuItems" />
+		<mapping class="com.hexaware.casestudy.entity.Payment" />
 		<mapping class="com.hexaware.casestudy.entity.Orders" />
 
 

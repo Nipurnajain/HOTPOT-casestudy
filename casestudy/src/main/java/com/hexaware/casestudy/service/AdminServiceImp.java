@@ -2,7 +2,7 @@ package com.hexaware.casestudy.service;
 
 import java.util.List;
 
-import com.hexaware.casestudy.entity.Admininstrator;
+import com.hexaware.casestudy.entity.Administrator;
 import com.hexaware.casestudy.entity.MenuItems;
 import com.hexaware.casestudy.entity.Orders;
 import com.hexaware.casestudy.entity.Restaurants;
@@ -10,7 +10,7 @@ import com.hexaware.casestudy.entity.Restaurants;
 public class AdminServiceImp implements IAdminService {
 
 	@Override
-	public String adminLogin(Admininstrator admin) {
+	public String adminLogin(Administrator admin) {
 		
 		return null;
 	}

@@ -13,37 +13,20 @@ import com.hexaware.casestudy.entity.DeliveryAddress;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
-    	SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    public static void main( String[] args ) {
+    System.out.println("main executed");
 
-		try (Session session = sessionFactory.openSession()) {
-			DeliveryAddress deliveryAddress = new DeliveryAddress();
-			deliveryAddress.setAddressId(1);
-			deliveryAddress.setHouseNo("123");
-			deliveryAddress.setArea("Main Street");
-			deliveryAddress.setLandmark("Near Park");
-			deliveryAddress.setCity("Mumbai");
-			deliveryAddress.setPincode(400001);
+	SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-			
-			Customers customer = new Customers();
-			customer.setCustId(101);
-			customer.setCustName("John Doe");
-			customer.setGender("Male");
-			customer.setEmail("john.doe@example.com");
-			customer.setPhone("1234567890");
-			customer.setUsername("john_doe");
-			customer.setPassword("password123");
-			customer.setAddress(deliveryAddress);
+	try (Session session = sessionFactory.openSession()) {
+		
 
-			deliveryAddress.setCustomer(customer);
+		Transaction transaction = session.beginTransaction();
 
-			Transaction transaction = session.beginTransaction();
+		
 
-			session.persist(customer);
-
-			transaction.commit();
+		transaction.commit();
+	}
 		}
     }
-}
+

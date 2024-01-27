@@ -2,14 +2,14 @@ package com.hexaware.casestudy.service;
 
 import java.util.List;
 
-import com.hexaware.casestudy.entity.Admininstrator;
+import com.hexaware.casestudy.entity.Administrator;
 import com.hexaware.casestudy.entity.MenuItems;
 import com.hexaware.casestudy.entity.Orders;
 import com.hexaware.casestudy.entity.Restaurants;
 
 public interface IAdminService {
 
-	public String adminLogin(Admininstrator admin);
+	public String adminLogin(Administrator admin);
 
 	public Restaurants addRestaurant(Restaurants restaurant);
 

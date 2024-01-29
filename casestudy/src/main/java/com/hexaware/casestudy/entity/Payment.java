@@ -12,30 +12,31 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Payment {
-
+	
 	@Id
-	@Column(name = "PaymentID")
-	private int paymentId;
+    @Column(name = "PaymentID")
+    private int paymentId;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "UserID")
-	private Customers customer;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CartID")
-	private Cart cart;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "UserID")
+    private Customers customer;
 
-	@Column(name = "PaymentDate", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	private Timestamp paymentDate;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CartID")
+    private Cart cart;
 
-	@Column(name = "Amount")
-	private BigDecimal amount;
+    @Column(name = "PaymentDate", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Timestamp paymentDate;
 
-	@Column(name = "PaymentMethod")
-	private String paymentMethod;
+    @Column(name = "Amount")
+    private BigDecimal amount;
 
-	@Column(name = "TransactionID")
-	private String transactionID;
+    @Column(name = "PaymentMethod")
+    private String paymentMethod;
+
+    @Column(name = "TransactionID")
+    private String transactionID;
 
 	public Payment() {
 		super();
@@ -116,4 +117,6 @@ public class Payment {
 				+ transactionID + "]";
 	}
 
+    
+    
 }

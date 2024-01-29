@@ -12,23 +12,23 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Discount {
-
+	
 	@Id
-	@Column(name = "DiscountID")
-	private int discountId;
+    @Column(name = "DiscountID")
+    private int discountId;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "RestaurantID")
-	private Restaurants restaurant;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "RestaurantID")
+    private Restaurants restaurant;
 
-	@Column(name = "DiscountPercentage")
-	private BigDecimal discountPercentage;
+    @Column(name = "DiscountPercentage")
+    private BigDecimal discountPercentage;
 
-	@Column(name = "StartDate")
-	private Date startDate;
+    @Column(name = "StartDate")
+    private Date startDate;
 
-	@Column(name = "EndDate")
-	private Date endDate;
+    @Column(name = "EndDate")
+    private Date endDate;
 
 	public Discount() {
 		super();
@@ -89,5 +89,7 @@ public class Discount {
 		return "Discount [discountId=" + discountId + ", restaurant=" + restaurant + ", discountPercentage="
 				+ discountPercentage + ", startDate=" + startDate + ", endDate=" + endDate + "]";
 	}
+    
+    
 
 }

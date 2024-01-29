@@ -7,178 +7,194 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+
 @Entity
 public class MenuItems {
+	
 
-	@Id
-	private Long menuitemId;
+	    @Id
+	    private Long menuitemId;
 
-	private String itemName;
+	    private String itemName;
 
-	private String description;
+	    private String description;
 
-	private String category;
+	    private String category;
 
-	private Double price;
+	    private Double price;
 
-	private String availabilityTime;
+	    private String availabilityTime;
 
-	private String specialDietaryInfo;
+	    private String specialDietaryInfo;
 
-	private String tasteInfo;
+	    private String tasteInfo;
 
-	private String nutritionalInfo;
+	    private String nutritionalInfo;
 
-	private Integer cookingTime;
+	    private Integer cookingTime;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "RestaurantID")
-	private Restaurants restaurant;
+	    
+	    @ManyToOne(cascade = CascadeType.ALL)
+	    @JoinColumn(name = "RestaurantID")
+	    private Restaurants restaurant;
+	    
+	    @OneToMany(mappedBy = "menuItem",cascade = CascadeType.ALL)
+	    private Set<OrderDetails> orderDetailsSet = new HashSet<OrderDetails>();
+	    
+		@ManyToOne(cascade = CascadeType.ALL)
+	    @JoinColumn(name = "CartID")
+	    private Cart cart;
+		
+		@ManyToMany(mappedBy = "menuItems")
+	    private Set<Orders> orders = new HashSet<>();
 
-	@OneToMany(mappedBy = "menuItem", cascade = CascadeType.ALL)
-	private Set<OrderDetails> orderDetailsSet = new HashSet<OrderDetails>();
+		public MenuItems() {
+			super();
+		}
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CartID")
-	private Cart cart;
+		public MenuItems(Long menuitemId, String itemName, String description, String category, Double price,
+				String availabilityTime, String specialDietaryInfo, String tasteInfo, String nutritionalInfo,
+				Integer cookingTime) {
+			super();
+			this.menuitemId = menuitemId;
+			this.itemName = itemName;
+			this.description = description;
+			this.category = category;
+			this.price = price;
+			this.availabilityTime = availabilityTime;
+			this.specialDietaryInfo = specialDietaryInfo;
+			this.tasteInfo = tasteInfo;
+			this.nutritionalInfo = nutritionalInfo;
+			this.cookingTime = cookingTime;
+		}
 
-	public MenuItems() {
-		super();
-	}
+		public Long getMenuitemId() {
+			return menuitemId;
+		}
 
-	public MenuItems(Long menuitemId, String itemName, String description, String category, Double price,
-			String availabilityTime, String specialDietaryInfo, String tasteInfo, String nutritionalInfo,
-			Integer cookingTime, Restaurants restaurant, Set<OrderDetails> orderDetailsSet, Cart cart) {
-		super();
-		this.menuitemId = menuitemId;
-		this.itemName = itemName;
-		this.description = description;
-		this.category = category;
-		this.price = price;
-		this.availabilityTime = availabilityTime;
-		this.specialDietaryInfo = specialDietaryInfo;
-		this.tasteInfo = tasteInfo;
-		this.nutritionalInfo = nutritionalInfo;
-		this.cookingTime = cookingTime;
-		this.restaurant = restaurant;
-		this.orderDetailsSet = orderDetailsSet;
-		this.cart = cart;
-	}
+		public void setMenuitemId(Long menuitemId) {
+			this.menuitemId = menuitemId;
+		}
 
-	public Long getMenuitemId() {
-		return menuitemId;
-	}
+		public String getItemName() {
+			return itemName;
+		}
 
-	public void setMenuitemId(Long menuitemId) {
-		this.menuitemId = menuitemId;
-	}
+		public void setItemName(String itemName) {
+			this.itemName = itemName;
+		}
 
-	public String getItemName() {
-		return itemName;
-	}
+		public String getDescription() {
+			return description;
+		}
 
-	public void setItemName(String itemName) {
-		this.itemName = itemName;
-	}
+		public void setDescription(String description) {
+			this.description = description;
+		}
 
-	public String getDescription() {
-		return description;
-	}
+		public String getCategory() {
+			return category;
+		}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+		public void setCategory(String category) {
+			this.category = category;
+		}
 
-	public String getCategory() {
-		return category;
-	}
+		public Double getPrice() {
+			return price;
+		}
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
+		public void setPrice(Double price) {
+			this.price = price;
+		}
 
-	public Double getPrice() {
-		return price;
-	}
+		public String getAvailabilityTime() {
+			return availabilityTime;
+		}
 
-	public void setPrice(Double price) {
-		this.price = price;
-	}
+		public void setAvailabilityTime(String availabilityTime) {
+			this.availabilityTime = availabilityTime;
+		}
 
-	public String getAvailabilityTime() {
-		return availabilityTime;
-	}
+		public String getSpecialDietaryInfo() {
+			return specialDietaryInfo;
+		}
 
-	public void setAvailabilityTime(String availabilityTime) {
-		this.availabilityTime = availabilityTime;
-	}
+		public void setSpecialDietaryInfo(String specialDietaryInfo) {
+			this.specialDietaryInfo = specialDietaryInfo;
+		}
 
-	public String getSpecialDietaryInfo() {
-		return specialDietaryInfo;
-	}
+		public String getTasteInfo() {
+			return tasteInfo;
+		}
 
-	public void setSpecialDietaryInfo(String specialDietaryInfo) {
-		this.specialDietaryInfo = specialDietaryInfo;
-	}
+		public void setTasteInfo(String tasteInfo) {
+			this.tasteInfo = tasteInfo;
+		}
 
-	public String getTasteInfo() {
-		return tasteInfo;
-	}
+		public String getNutritionalInfo() {
+			return nutritionalInfo;
+		}
 
-	public void setTasteInfo(String tasteInfo) {
-		this.tasteInfo = tasteInfo;
-	}
+		public void setNutritionalInfo(String nutritionalInfo) {
+			this.nutritionalInfo = nutritionalInfo;
+		}
 
-	public String getNutritionalInfo() {
-		return nutritionalInfo;
-	}
+		public Integer getCookingTime() {
+			return cookingTime;
+		}
 
-	public void setNutritionalInfo(String nutritionalInfo) {
-		this.nutritionalInfo = nutritionalInfo;
-	}
+		public void setCookingTime(Integer cookingTime) {
+			this.cookingTime = cookingTime;
+		}
 
-	public Integer getCookingTime() {
-		return cookingTime;
-	}
+		public Restaurants getRestaurant() {
+			return restaurant;
+		}
 
-	public void setCookingTime(Integer cookingTime) {
-		this.cookingTime = cookingTime;
-	}
+		public void setRestaurant(Restaurants restaurant) {
+			this.restaurant = restaurant;
+		}
 
-	public Restaurants getRestaurant() {
-		return restaurant;
-	}
+		public Set<OrderDetails> getOrderDetailsSet() {
+			return orderDetailsSet;
+		}
 
-	public void setRestaurant(Restaurants restaurant) {
-		this.restaurant = restaurant;
-	}
+		public void setOrderDetailsSet(Set<OrderDetails> orderDetailsSet) {
+			this.orderDetailsSet = orderDetailsSet;
+		}
 
-	public Set<OrderDetails> getOrderDetailsSet() {
-		return orderDetailsSet;
-	}
+		public Cart getCart() {
+			return cart;
+		}
 
-	public void setOrderDetailsSet(Set<OrderDetails> orderDetailsSet) {
-		this.orderDetailsSet = orderDetailsSet;
-	}
+		public void setCart(Cart cart) {
+			this.cart = cart;
+		}
 
-	public Cart getCart() {
-		return cart;
-	}
+		public Set<Orders> getOrders() {
+			return orders;
+		}
 
-	public void setCart(Cart cart) {
-		this.cart = cart;
-	}
+		public void setOrders(Set<Orders> orders) {
+			this.orders = orders;
+		}
 
-	@Override
-	public String toString() {
-		return "MenuItems [menuitemId=" + menuitemId + ", itemName=" + itemName + ", description=" + description
-				+ ", category=" + category + ", price=" + price + ", availabilityTime=" + availabilityTime
-				+ ", specialDietaryInfo=" + specialDietaryInfo + ", tasteInfo=" + tasteInfo + ", nutritionalInfo="
-				+ nutritionalInfo + ", cookingTime=" + cookingTime + ", restaurant=" + restaurant + ", orderDetailsSet="
-				+ orderDetailsSet + ", cart=" + cart + "]";
-	}
+		@Override
+		public String toString() {
+			return "MenuItems [menuitemId=" + menuitemId + ", itemName=" + itemName + ", description=" + description
+					+ ", category=" + category + ", price=" + price + ", availabilityTime=" + availabilityTime
+					+ ", specialDietaryInfo=" + specialDietaryInfo + ", tasteInfo=" + tasteInfo + ", nutritionalInfo="
+					+ nutritionalInfo + ", cookingTime=" + cookingTime + ", restaurant=" + restaurant
+					+ ", orderDetailsSet=" + orderDetailsSet + ", cart=" + cart + ", orders=" + orders + "]";
+		}
+
+		
+		
+
 
 }

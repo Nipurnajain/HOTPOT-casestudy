@@ -12,18 +12,18 @@ import javax.persistence.ManyToOne;
 @Entity
 public class OrderDetails {
 	@Id
-	@Column(name = "OrderDetailID")
-	private int orderDetailId;
+    @Column(name = "OrderDetailID")
+    private int orderDetailId;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "OrderID")
-	private Orders order;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "OrderID")
+    private Orders order;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "MenuID")
-	private MenuItems menuItem;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "MenuID")
+    private MenuItems menuItem;
 
-	private int quantity;
+    private int quantity;
 
 	public OrderDetails() {
 		super();
@@ -37,42 +37,12 @@ public class OrderDetails {
 		this.quantity = quantity;
 	}
 
-	public int getOrderDetailId() {
-		return orderDetailId;
-	}
-
-	public void setOrderDetailId(int orderDetailId) {
-		this.orderDetailId = orderDetailId;
-	}
-
-	public Orders getOrder() {
-		return order;
-	}
-
-	public void setOrder(Orders order) {
-		this.order = order;
-	}
-
-	public MenuItems getMenuItem() {
-		return menuItem;
-	}
-
-	public void setMenuItem(MenuItems menuItem) {
-		this.menuItem = menuItem;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
 	@Override
 	public String toString() {
 		return "OrderDetails [orderDetailId=" + orderDetailId + ", order=" + order + ", menuItem=" + menuItem
 				+ ", quantity=" + quantity + "]";
 	}
 
+    
+    
 }

@@ -3,6 +3,7 @@ package com.hexaware.casestudy.service;
 import java.util.List;
 
 import com.hexaware.casestudy.entity.Administrator;
+import com.hexaware.casestudy.entity.Customers;
 import com.hexaware.casestudy.entity.MenuItems;
 import com.hexaware.casestudy.entity.Orders;
 import com.hexaware.casestudy.entity.Restaurants;
@@ -43,6 +44,26 @@ public class AdminServiceImp implements IAdminService {
 	public List<Orders> getAllOrders() {
 		
 		return null;
+	}
+
+	@Override
+	public Restaurants addCustomers(Customers customer) {
+		return null;
+	}
+
+	@Override
+	public Restaurants addMenuItem(MenuItems menuItem) {
+		return null;
+	}
+
+	@Override
+	public void removeCustomers(Long custId) {
+		
+	}
+
+	@Override
+	public void removeMenuItems(Long menuItemId) {
+		
 	}
 
 }

@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 public final class Customers {
-
+	
 	@Id
 	private int custId;
 	private String custName;
@@ -21,19 +21,19 @@ public final class Customers {
 	private String phone;
 	private String username;
 	private String password;
-
+	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "aid")
+	@JoinColumn(name= "aid")
 	private DeliveryAddress address;
+	
+	 @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+	 private Set<Orders> orderSet= new HashSet<>();
+	 
+	 @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+	    private Set<Payment> paymentSet = new HashSet<>(); 
 
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-	private Set<Orders> orderSet = new HashSet<>();
-
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-	private Set<Payment> paymentSet = new HashSet<>();
-
-	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
-	private Cart cart;
+	    @OneToOne(mappedBy = "customer",cascade = CascadeType.ALL)
+	    private Cart cart;
 
 	public Customers() {
 		super();
@@ -122,5 +122,11 @@ public final class Customers {
 				+ ", phone=" + phone + ", username=" + username + ", password=" + password + ", address=" + address
 				+ "]";
 	}
+	
+	
+	
+	
+	
+	
 
 }
